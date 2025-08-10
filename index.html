@@ -8,17 +8,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --secondary: #7c3aed;
-      --dark: #1e293b;
+      --primary: #6c63ff;
+      --secondary: #ff6584;
+      --dark: #121212;
+      --darker: #0a0a0a;
       --light: #f8fafc;
-      --background: #ffffff;
-      --card-bg: #f1f5f9;
-      --text: #334155;
-      --text-light: #64748b;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --background: #1e1e1e;
+      --card-bg: #2a2a2a;
+      --text: #e0e0e0;
+      --text-light: #a0a0a0;
+      --border: #3a3a3a;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      --hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      --glow: 0 0 15px rgba(108, 99, 255, 0.5);
     }
     
     * {
@@ -43,14 +45,15 @@
     /* Header */
     header {
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, var(--background) 0%, var(--card-bg) 100%);
+      padding: 100px 20px;
+      background: linear-gradient(135deg, var(--darker) 0%, var(--card-bg) 100%);
       border-radius: 16px;
       margin: 40px;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
+      box-shadow: var(--shadow), var(--glow);
+      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      border: 1px solid var(--border);
     }
 
     header::before {
@@ -64,16 +67,17 @@
     }
 
     header:hover {
-      box-shadow: var(--hover-shadow);
-      transform: translateY(-3px);
+      box-shadow: var(--hover-shadow), var(--glow);
+      transform: translateY(-5px);
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 20px;
-      color: var(--dark);
+      color: var(--light);
       position: relative;
       display: inline-block;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .highlight {
@@ -89,10 +93,10 @@
       left: 0;
       width: 100%;
       height: 3px;
-      background-color: var(--primary);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
 
     .highlight:hover::after {
@@ -126,17 +130,19 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background-color: rgba(37, 99, 235, 0.1);
+      background-color: rgba(108, 99, 255, 0.1);
+      border: 1px solid var(--border);
     }
 
     .social-links a:hover {
       color: white;
       background-color: var(--primary);
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
     }
 
     .resume-button {
-      background-color: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: white;
       border: none;
       padding: 12px 30px;
@@ -150,13 +156,12 @@
       align-items: center;
       gap: 8px;
       margin-top: 20px;
-      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
     }
 
     .resume-button:hover {
-      background-color: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
     }
 
     /* Main Container */
@@ -174,17 +179,17 @@
       padding: 30px;
       border-radius: 16px;
       box-shadow: var(--shadow);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       border: 1px solid var(--border);
     }
 
     section:hover {
       transform: translateY(-5px);
-      box-shadow: var(--hover-shadow);
+      box-shadow: var(--hover-shadow), 0 0 20px rgba(108, 99, 255, 0.2);
     }
 
     h2 {
-      color: var(--dark);
+      color: var(--light);
       margin-bottom: 20px;
       font-size: 1.8rem;
       position: relative;
@@ -207,7 +212,7 @@
       left: 40px;
       width: 50px;
       height: 3px;
-      background: var(--primary);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       border-radius: 3px;
     }
 
@@ -218,7 +223,7 @@
     }
 
     strong {
-      color: var(--dark);
+      color: var(--light);
       font-weight: 500;
     }
 
@@ -244,7 +249,7 @@
     }
 
     .education li {
-      background: white;
+      background: rgba(40, 40, 40, 0.5);
       padding: 20px;
       border-radius: 10px;
       border-left: 3px solid var(--primary);
@@ -252,7 +257,7 @@
     }
 
     .education li:hover {
-      background: #f8fafc;
+      background: rgba(50, 50, 50, 0.7);
       transform: translateX(5px);
     }
 
@@ -272,7 +277,7 @@
     }
 
     .skill-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.1);
     }
 
     .skill-item img {
@@ -281,9 +286,11 @@
       object-fit: contain;
       margin-bottom: 10px;
       transition: all 0.3s ease;
+      filter: grayscale(30%);
     }
 
     .skill-item:hover img {
+      filter: grayscale(0%) brightness(1.2);
       transform: scale(1.1);
     }
 
@@ -311,18 +318,20 @@
       height: 100px;
       position: relative;
       transition: all 0.3s ease;
-      background: white;
+      background: rgba(40, 40, 40, 0.5);
       border-radius: 12px;
       padding: 15px;
       box-shadow: var(--shadow);
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid var(--border);
     }
 
     .badge-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.05);
       box-shadow: var(--hover-shadow);
+      background: rgba(50, 50, 50, 0.7);
     }
 
     .badge-item img {
@@ -336,7 +345,7 @@
       bottom: -40px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--dark);
+      background: var(--primary);
       color: white;
       padding: 5px 10px;
       border-radius: 5px;
@@ -344,6 +353,7 @@
       opacity: 0;
       transition: all 0.3s ease;
       white-space: nowrap;
+      z-index: 10;
     }
 
     .badge-item:hover .badge-tooltip {
@@ -360,7 +370,7 @@
     }
 
     .tool-item {
-      background: white;
+      background: rgba(40, 40, 40, 0.5);
       border-radius: 12px;
       padding: 20px;
       transition: all 0.3s ease;
@@ -369,11 +379,13 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      border: 1px solid var(--border);
     }
 
     .tool-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.05);
       box-shadow: var(--hover-shadow);
+      background: rgba(50, 50, 50, 0.7);
     }
 
     .tool-item img {
@@ -381,6 +393,11 @@
       height: 60px;
       object-fit: contain;
       margin-bottom: 10px;
+      filter: grayscale(30%);
+    }
+
+    .tool-item:hover img {
+      filter: grayscale(0%) brightness(1.2);
     }
 
     .tool-item span {
@@ -398,16 +415,18 @@
     }
 
     .certificate-item {
-      background: white;
+      background: rgba(40, 40, 40, 0.5);
       border-radius: 10px;
       overflow: hidden;
       transition: all 0.3s ease;
       box-shadow: var(--shadow);
+      border: 1px solid var(--border);
     }
 
     .certificate-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
       box-shadow: var(--hover-shadow);
+      background: rgba(50, 50, 50, 0.7);
     }
 
     .certificate-item img {
@@ -422,7 +441,7 @@
     }
 
     .certificate-info h3 {
-      color: var(--dark);
+      color: var(--light);
       margin-bottom: 10px;
       font-size: 1.1rem;
     }
@@ -444,6 +463,7 @@
     }
 
     .certificate-link:hover {
+      color: var(--secondary);
       text-decoration: underline;
     }
 
@@ -473,7 +493,7 @@
       padding: 12px 15px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: white;
+      background: rgba(40, 40, 40, 0.5);
       color: var(--text);
       font-family: 'Poppins', sans-serif;
       font-size: 1rem;
@@ -484,7 +504,8 @@
     .message-section textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+      background: rgba(50, 50, 50, 0.7);
     }
 
     .message-section textarea {
@@ -493,7 +514,7 @@
     }
 
     .submit-btn {
-      background: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: white;
       border: none;
       padding: 15px;
@@ -506,23 +527,25 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
     }
 
     .submit-btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.25);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
     }
 
     /* Terminal Effect */
     .terminal {
-      background: var(--dark);
+      background: var(--darker);
       border-radius: 8px;
       padding: 20px;
       font-family: 'Roboto Mono', monospace;
       margin-top: 30px;
       color: #e2e8f0;
       position: relative;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
     }
 
     .terminal::before {
@@ -566,14 +589,16 @@
       font-size: 0.9rem;
       transition: all 0.3s ease;
       padding: 8px 12px;
-      background-color: rgba(37, 99, 235, 0.1);
+      background-color: rgba(108, 99, 255, 0.1);
       border-radius: 6px;
+      border: 1px solid var(--border);
     }
 
     .project-link:hover {
-      background-color: rgba(37, 99, 235, 0.2);
+      background-color: rgba(108, 99, 255, 0.2);
       transform: translateX(3px);
       text-decoration: none;
+      color: var(--secondary);
     }
 
     /* Footer */
@@ -591,11 +616,36 @@
       font-size: 0.8rem;
     }
 
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
         margin: 20px 10px;
-        padding: 50px 15px;
+        padding: 60px 15px;
       }
       
       h1 {
@@ -637,7 +687,8 @@
 
     @media (max-width: 480px) {
       header {
-        padding: 40px 15px;
+        padding: 50px 15px;
+        margin: 15px;
       }
       
       h1 {
@@ -662,20 +713,32 @@
       section {
         padding: 20px;
       }
+      
+      .theme-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Hello, I'm <span class="highlight">Srishti Kumari</span></h1>
-    <p>Cybersecurity Analyst |Front End Developer</p>
+    <p>Cybersecurity Analyst | Front End Developer</p>
     <a href="Srishti_Kumari_CV.pdf" class="resume-button" download>
       <i class="fas fa-download"></i> Download CV
     </a>
     <div class="social-links">
       <a href="https://www.linkedin.com/in/srishti-kumari-a3582a281/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/srishti498" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://x.com/sri64965" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       <a href="mailto:kumarsinghnarendra018@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </header>
@@ -732,7 +795,7 @@
           <div class="project-links">
             <a href="https://github.com/srishti498/TrueFace" target="_blank" class="project-link">
               <i class="fab fa-github"></i> GitHub Repository
-              </a>
+            </a>
           </div>
         </li>
         <li>
@@ -747,9 +810,55 @@
           <div class="project-links">
             <a href="https://github.com/srishti498/Email-Spam-Classifier" target="_blank" class="project-link">
               <i class="fab fa-github"></i> GitHub Repository
-              </a>
+            </a>
           </div>
         </li>
+        <li>
+          <strong>Password Strength Checker</strong><br>
+          A smart and secure web tool that instantly checks the strength of your password and gives real-time feedback for better security. Features include:
+          <ul>
+            <li>Real-time password strength analysis</li>
+            <li>Visual strength meter with color indicators</li>
+            <li>Actionable tips to make passwords stronger</li>
+            <li>100% client-side</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/srishti498/Password-Strength-Checker.git" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
+        </li>
+         <li>
+          <strong>Phishing Website Detector</strong><br>
+          A lightweight, real-time tool that analyzes URLs and web pages to detect phishing attempts before users enter credentials. Features include:
+          <ul>
+            <li>URL analysis</li>
+            <li>ML-based classification combining URL + content signals for high accuracy</li>
+            <li>Instant user warning UI + one-click report option</li>
+            <li>Content heuristics</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/srishti498/Phishing-Website-Detector.git" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
+        </li>
+        <li>
+          <strong>Virtual Art Gallery</strong><br>
+          An interactive, web-based art gallery designed to showcase photography collections in a realistic, museum-like environment. Features include:
+          <ul>
+            <li>3D gallery layout with immersive navigation</li>
+            <li>High-resolution photography display with zoom & fullscreen view</li>
+            <li>Light & dark mode for enhanced viewing experience</li>
+            <li>Responsive design for desktop, tablet, and mobile</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/srishti498/Virtual-Art-Gallery.git" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section class="skills">
@@ -804,6 +913,7 @@
             <img src="https://hrcdn.net/fcore/assets/badges/sql-89e76e7082.svg" alt="SQL">
             <span class="badge-tooltip">SQL (Intermediate)</span>
           </div>
+        </div>
         <p style="text-align: center; margin-top: 30px;">
           <a href="https://www.hackerrank.com/profile/kumarsinghnaren1" target="_blank" class="project-link">
             <i class="fas fa-external-link-alt"></i> View my HackerRank profile
@@ -815,7 +925,7 @@
     <section class="certificates-section">
       <h2><i class="fas fa-certificate"></i> Certifications</h2>
       <div class="certificates">
-      <div class="certificate-item">
+        <div class="certificate-item">
           <img src="infosys.png" alt="Certificate 2">
           <div class="certificate-info">
             <h3>Data Structures and Algorithms</h3>
@@ -835,46 +945,47 @@
             </a>
           </div>
         </div>
-          <div class="certificate-item">
-            <img src="PwC.png" alt="Certificate 4">
-            <div class="certificate-info">
-              <h3>PwC - Cybersecurity Consulting simulation</h3>
-              <p>Forage - 2025</p>
-              <a href="https://www.theforage.com/achievements" target="_blank" class="certificate-link">
-                <i class="fas fa-external-link-alt"></i> Verify Certificate
-              </a>
-            </div>
+        <div class="certificate-item">
+          <img src="PwC.png" alt="Certificate 4">
+          <div class="certificate-info">
+            <h3>PwC - Cybersecurity Consulting simulation</h3>
+            <p>Forage - 2025</p>
+            <a href="https://www.theforage.com/achievements" target="_blank" class="certificate-link">
+              <i class="fas fa-external-link-alt"></i> Verify Certificate
+            </a>
           </div>
-          <div class="certificate-item">
-            <img src="courseera.png" alt="Certificate 5">
-            <div class="certificate-info">
-              <h3> Introduction to Cybersecurity Tools & Cyberattacks</h3>
-              <p>IBM Coursera - 2025</p>
-              <a href="https://www.coursera.org/account/accomplishments/verify/8NOCA56UG3ZE" target="_blank" class="certificate-link">
-                <i class="fas fa-external-link-alt"></i> Verify Certificate
-              </a>
-            </div>
-            </div>
-          <div class="certificate-item">
-            <img src="Google.png" alt="Certificate 6">
-            <div class="certificate-info">
-              <h3> IT Security: Defense Against the Digital Dark Arts</h3>
-              <p>Google Coursera - 2025</p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/U055QOR8E0Y5" target="_blank" class="certificate-link">
-                <i class="fas fa-external-link-alt"></i> Verify Certificate
-              </a>
-            </div>
-            </div>
-          <div class="certificate-item">
-            <img src="AWS.png" alt="Certificate 7">
-            <div class="certificate-info">
-              <h3> AWS Cloud Technical Essentials</h3>
-              <p>Google Coursera - 2025</p>
-              <a href="https://www.coursera.org/account/accomplishments/certificate/TLXX3JD8C2Z0" target="_blank" class="certificate-link">
-                <i class="fas fa-external-link-alt"></i> Verify Certificate
-              </a>
-            </div>
         </div>
+        <div class="certificate-item">
+          <img src="courseera.png" alt="Certificate 5">
+          <div class="certificate-info">
+            <h3> Introduction to Cybersecurity Tools & Cyberattacks</h3>
+            <p>IBM Coursera - 2025</p>
+            <a href="https://www.coursera.org/account/accomplishments/verify/8NOCA56UG3ZE" target="_blank" class="certificate-link">
+              <i class="fas fa-external-link-alt"></i> Verify Certificate
+            </a>
+          </div>
+        </div>
+        <div class="certificate-item">
+          <img src="Google.png" alt="Certificate 6">
+          <div class="certificate-info">
+            <h3> IT Security: Defense Against the Digital Dark Arts</h3>
+            <p>Google Coursera - 2025</p>
+            <a href="https://www.coursera.org/account/accomplishments/certificate/U055QOR8E0Y5" target="_blank" class="certificate-link">
+              <i class="fas fa-external-link-alt"></i> Verify Certificate
+            </a>
+          </div>
+        </div>
+        <div class="certificate-item">
+          <img src="AWS.png" alt="Certificate 7">
+          <div class="certificate-info">
+            <h3> AWS Cloud Technical Essentials</h3>
+            <p>Google Coursera - 2025</p>
+            <a href="https://www.coursera.org/account/accomplishments/certificate/TLXX3JD8C2Z0" target="_blank" class="certificate-link">
+              <i class="fas fa-external-link-alt"></i> Verify Certificate
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="message-section">
@@ -905,6 +1016,10 @@
     </div>
   </footer>
 
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <script>
     // Simple form submission handler
     const contactForm = document.getElementById('contactForm');
@@ -916,6 +1031,36 @@
       });
     }
     
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Check for saved theme preference or use the system preference
+    const currentTheme = localStorage.getItem('theme') || 
+                        (prefersDarkScheme.matches ? 'dark' : 'light');
+    
+    // Apply the current theme
+    if (currentTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+      
+      if (theme === 'light') {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    });
+    
+    // Add smooth scrolling to all links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
